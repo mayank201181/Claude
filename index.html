@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocabulary Dashboard &mdash; IGCSE English</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <h1>Word<span>Lab</span></h1>
+      <p class="tagline">Vocabulary for IGCSE Literature &amp; analysis</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-view="learn" role="tab">Learn</button>
+    <button class="tab" data-view="quiz" role="tab">Quiz</button>
+    <button class="tab" data-view="progress" role="tab">Progress</button>
+  </nav>
+
+  <main class="container">
+
+    <!-- WORD OF THE DAY -->
+    <section id="wotd" class="wotd"></section>
+
+    <!-- LEARN VIEW -->
+    <section id="view-learn" class="view active">
+      <div class="controls">
+        <input type="search" id="search" placeholder="Search a word, definition or synonym&hellip;" aria-label="Search" />
+        <select id="filter-category" aria-label="Filter by category"></select>
+        <select id="filter-difficulty" aria-label="Filter by difficulty">
+          <option value="">All levels</option>
+          <option value="1">Foundation</option>
+          <option value="2">Intermediate</option>
+          <option value="3">Advanced</option>
+        </select>
+        <label class="checkbox"><input type="checkbox" id="filter-fav" /> Favourites only</label>
+      </div>
+      <p id="learn-count" class="count"></p>
+      <div id="word-list" class="word-grid"></div>
+    </section>
+
+    <!-- QUIZ VIEW -->
+    <section id="view-quiz" class="view">
+      <div id="quiz-setup" class="quiz-setup">
+        <h2>Test yourself</h2>
+        <p>Active recall is the fastest way to make new words stick. Pick a mode and go.</p>
+        <div class="quiz-options">
+          <label>Question type
+            <select id="quiz-mode">
+              <option value="def-to-word">Definition &rarr; word</option>
+              <option value="word-to-def">Word &rarr; definition</option>
+              <option value="fill-blank">Fill in the blank (example sentence)</option>
+              <option value="mixed">Mixed (all of the above)</option>
+            </select>
+          </label>
+          <label>Category
+            <select id="quiz-category"></select>
+          </label>
+          <label>Number of questions
+            <select id="quiz-length">
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+            </select>
+          </label>
+        </div>
+        <button id="quiz-start" class="btn-primary">Start quiz</button>
+      </div>
+
+      <div id="quiz-active" class="quiz-active hidden">
+        <div class="quiz-progress">
+          <span id="quiz-counter"></span>
+          <span id="quiz-score"></span>
+        </div>
+        <div class="progress-bar"><div id="quiz-bar"></div></div>
+        <h2 id="quiz-prompt-label" class="quiz-prompt-label"></h2>
+        <p id="quiz-prompt" class="quiz-prompt"></p>
+        <div id="quiz-choices" class="quiz-choices"></div>
+        <div id="quiz-feedback" class="quiz-feedback"></div>
+        <button id="quiz-next" class="btn-primary hidden">Next &rarr;</button>
+      </div>
+
+      <div id="quiz-results" class="quiz-results hidden">
+        <h2>Quiz complete</h2>
+        <p id="quiz-final-score" class="final-score"></p>
+        <div id="quiz-review" class="quiz-review"></div>
+        <button id="quiz-restart" class="btn-primary">New quiz</button>
+      </div>
+    </section>
+
+    <!-- PROGRESS VIEW -->
+    <section id="view-progress" class="view">
+      <h2>Your progress</h2>
+      <div class="stat-grid">
+        <div class="stat-card"><span id="stat-total" class="stat-num">0</span><span class="stat-label">Words in bank</span></div>
+        <div class="stat-card"><span id="stat-known" class="stat-num">0</span><span class="stat-label">Marked as known</span></div>
+        <div class="stat-card"><span id="stat-fav" class="stat-num">0</span><span class="stat-label">Favourites</span></div>
+        <div class="stat-card"><span id="stat-quizzes" class="stat-num">0</span><span class="stat-label">Quizzes taken</span></div>
+        <div class="stat-card"><span id="stat-accuracy" class="stat-num">0%</span><span class="stat-label">Average accuracy</span></div>
+        <div class="stat-card"><span id="stat-streak" class="stat-num">0</span><span class="stat-label">Day streak</span></div>
+      </div>
+      <h3>Mastery by category</h3>
+      <div id="category-progress" class="category-progress"></div>
+      <h3>Recent quizzes</h3>
+      <div id="quiz-history" class="quiz-history"></div>
+      <button id="reset-progress" class="btn-ghost">Reset all progress</button>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>WordLab &middot; built for learning, not for grades. Tip: try to use one new word in conversation every day.</p>
+  </footer>
+
+  <script src="js/words.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
